@@ -6,9 +6,11 @@
 ### About:
 
 The project is an speech controlled online library.\
+
 It provides users the provision to search, borrow or return books by speaking the appropriate command. \
 It also has a feature to add new words by re training the models with new data.\
-This project has been developed using HMM in the backend.\
+
+This project has been developed using HMM in the backend.
 	
 ## To execute:
 
