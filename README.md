@@ -15,16 +15,16 @@ This project has been developed using HMM in the backend.\
 - Press F5 or Run without debugging on the Debug menu
 - To search for existing books, click on the "Find a new Book", and further instructions will be displyed on the screen
 - Books that are currently existing:
-	* Sherlock\
-	* Dracula\
-	* Speech\
-	* Scarlet\
-	* Happy\
-	* Falling\
-	* Legend\
-	* Hopeless\
-	* Trouble\
-	* Rabinar\
+	* Sherlock
+	* Dracula
+	* Speech
+	* Scarlet
+	* Happy
+	* Falling
+	* Legend
+	* Hopeless
+	* Trouble
+	* Rabinar
 - To Train a new model, click "Training", Enter the word to be trained and record 20 utterances of the same words
 
 
