@@ -4,7 +4,7 @@
 
 Other::Other(void)
 {
-	int i = 0, j = 0;
+	int i = 0, j = 0, trained_words = 0;
 
 	A = (long double**) calloc(6, sizeof(long double*));
 	for(i = 0; i < 6; ++i) {
@@ -50,6 +50,18 @@ Other::Other(void)
 		gamma[i] = (long double*) calloc(6, sizeof(long double));
 	}
 
+	B_bar = (long double**) calloc(6, sizeof(long double*));
+	for(i = 0; i < 6; i++){
+		B_bar[i] = (long double*) calloc(33, sizeof(long double));
+	}
+
+	A_bar = (long double**) calloc(6, sizeof(long double*));
+	for(i = 0; i < 6; i++){
+		A_bar[i] = (long double*) calloc(6, sizeof(long double));
+	}
+
+	Pi_bar = (long double*) calloc(6, sizeof(long double));
+
 	Xi = (long double***) calloc(86, sizeof(long double**));
 	for(i = 0; i < 86; i++){
 		Xi[i] = (long double**) calloc(6, sizeof(long double*));
@@ -61,37 +73,60 @@ Other::Other(void)
 		
 	}
 	
-	A_opt = (long double***) calloc(10, sizeof(long double**));
-	for(i = 0; i < 10; i++){
+	A_opt = (long double***) calloc(11, sizeof(long double**));
+	for(i = 0; i < 11; i++){
 		A_opt[i] = (long double**) calloc(6, sizeof(long double*));
 	}
-	for(i = 0; i < 10; i++){
+	for(i = 0; i < 11; i++){
 		for(j = 0; j < 6; j++){
 			A_opt[i][j] = (long double*) calloc(6, sizeof(long double));
 		}
 		
 	}
 
-	B_opt = (long double***) calloc(10, sizeof(long double**));
-	for(i = 0; i < 10; i++){
+	A_avg = (long double***) calloc(11, sizeof(long double**));
+	for(i = 0; i < 11; i++){
+		A_avg[i] = (long double**) calloc(6, sizeof(long double*));
+	}
+	for(i = 0; i < 11; i++){
+		for(j = 0; j < 6; j++){
+			A_avg[i][j] = (long double*) calloc(6, sizeof(long double));
+		}
+		
+	}
+
+	B_opt = (long double***) calloc(11, sizeof(long double**));
+	for(i = 0; i < 11; i++){
 		B_opt[i] = (long double**) calloc(6, sizeof(long double*));
 	}
-	for(i = 0; i < 10; i++){
+	for(i = 0; i < 11; i++){
 		for(j = 0; j < 6; j++){
 			B_opt[i][j] = (long double*) calloc(86, sizeof(long double));
 		}
 		
 	}
 
-	Pi_opt = (long double**) calloc(10, sizeof(long double*));
-	for(i = 0; i < 10; i++){
+	B_avg = (long double***) calloc(11, sizeof(long double**));
+	for(i = 0; i < 11; i++){
+		B_avg[i] = (long double**) calloc(6, sizeof(long double*));
+	}
+	for(i = 0; i < 11; i++){
+		for(j = 0; j < 6; j++){
+			B_avg[i][j] = (long double*) calloc(33, sizeof(long double));
+		}
+		
+	}
+
+	Pi_opt = (long double**) calloc(11, sizeof(long double*));
+	for(i = 0; i < 11; i++){
 		Pi_opt[i] = (long double*) calloc(6, sizeof(long double));
+	}
+
+	Pi_avg = (long double**) calloc(11, sizeof(long double*));
+	for(i = 0; i < 11; i++){
+		Pi_avg[i] = (long double*) calloc(6, sizeof(long double));
 	}
 
 	arr = (float*) calloc(45000, sizeof(float));
 }
 
-int Other::add()
-{
-	return 5;
-}

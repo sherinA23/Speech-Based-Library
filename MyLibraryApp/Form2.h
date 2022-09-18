@@ -1,6 +1,6 @@
 #pragma once
 #include "Other.h"
-
+#include<Windows.h>
 namespace MyLibraryApp {
 
 	using namespace System;
@@ -47,6 +47,7 @@ namespace MyLibraryApp {
 	//private: array< Int32^ >^ avail;
 	int *avail;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 	protected: 
 
 	private:
@@ -98,9 +99,11 @@ namespace MyLibraryApp {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::SystemColors::InactiveCaption;
-			this->pictureBox1->Location = System::Drawing::Point(339, 192);
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(239, 192);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(152, 200);
+			this->pictureBox1->Size = System::Drawing::Size(188, 267);
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -110,12 +113,12 @@ namespace MyLibraryApp {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(631, 430);
+			this->ClientSize = System::Drawing::Size(691, 496);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Name = L"Form2";
-			this->Text = L"Form2";
+			this->Text = L"Search";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -126,18 +129,24 @@ namespace MyLibraryApp {
 				Other^ obj = gcnew Other();
 				if (obj->live_testing(2) == 0){
 					textBox1->Text = "Speak the name of the book";
+					this->Refresh();
+					Sleep(2000);
 					int output = obj->live_testing(9);
 					String^ predictedBookName = books[output];
+					pictureBox1->Image = Image::FromFile(String::Concat("Images\\project\\", predictedBookName + ".jpg"));  
 					textBox1->Text = predictedBookName + "\r\nAvailable: " + avail[output] + "\r\nReturn  or Borrow?";
+
+					this->Refresh();
+					Sleep(5000);
 					output = obj->live_testing(2);
 					if(output == 1){
 						avail[output] ++;
 						textBox1->Text = "Book Returned Successfully!\r\n Current Availability: " + avail[output];
 					}else if(output == 2){
 						avail[output] -- ;
-						textBox1->Text = "You have borrowed " + books[output] + "!\r\n Current Availability: " + avail[output];
+						textBox1->Text = "You have borrowed " + predictedBookName + "!\r\n Current Availability: " + avail[output];
 					}else{
-						textBox1->Text = "Didn't understand. Please try again.";
+						textBox1->Text = "Didn't understand. Please try again.\r\nClick on Record Command and Speak 'Search' to start finding a book";
 					}
 				}else{
 					textBox1->Text = "Command not found. Please try again!\r\nClick on Record Command and Speak 'Search' to start finding a book";

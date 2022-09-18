@@ -36,6 +36,9 @@
     <ClCompile Include="Other.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Form31.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Other.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Form31.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
